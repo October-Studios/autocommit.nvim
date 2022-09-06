@@ -19,6 +19,12 @@
       src="https://img.shields.io/github/stars/October-Studios/autocommit.nvim?style=for-the-badge&logo=starship&color=c678dd&logoColor=d9e0ee&labelColor=282a36"
     />
   </a>
+  <a href="https://github.com/October-Studios/autocommit.nvim/releases/latest">
+    <img
+      alt="Releases"
+      src="https://img.shields.io/github/release/October-Studios/autocommit.nvim.svg?style=for-the-badge&include_prereleases&logo=github&color=F2CDCD&logoColor=d9e0ee&labelColor=282a36"
+    />
+  </a>
   <a href="https://github.com/October-Studios/autocommit.nvim/issues">
     <img
       alt="Issues"
