@@ -1,9 +1,8 @@
- ---
+---
 name: Bug Report
 about: Report a problem in autocommit
 title: 'Bug: '
 labels: bug
-
 ---
 
 <!--
