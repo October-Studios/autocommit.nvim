@@ -39,3 +39,19 @@ luac.out
 *.x86_64
 *.hex
 
+# ctags
+tags
+
+# helptags
+/doc/tags
+
+# panvimdoc
+/panvimdoc/
+
+# luacov
+/luacov.report
+/luacov.report.index
+/luacov.stats
+
+# tests
+/tmp_home/

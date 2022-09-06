@@ -1,0 +1,5 @@
+generatedFiles:
+  - path: "doc/autocommit.txt"
+    message: "`autocommit.txt` is generated from README.md. Make changes there instead."
+ignoreAuthors:
+  - 'github-actions[bot]'
