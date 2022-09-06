@@ -13,24 +13,24 @@ labels: bug
 
 ### Self Checks
 
-<!-- Check these boxes by placeing an X in the middle -->
+<!-- Check these boxes by placing an X in the middle -->
 - [ ] I'm using the latest autocommit.
-- [ ] I didn't find the issue in exsisting issues or prs.
+- [ ] I didn't find the issue in existing issues or PRs.
 
 ### How to reproduce the problem
 <!-- Add steps to reproduce with minimal config from below -->
 
-### Expected behaviour
+### Expected behavior
 
 
-### Actual behaviour
+### Actual behavior
 
 
 ### Minimal config to reproduce the issue
 
 <!--
   =================
-  ### IMPORTENT ###
+  ### IMPORTANT ###
   =================
 
   You need to provide a way to reproduce the issue without influence
@@ -65,4 +65,4 @@ labels: bug
 -->
 
 
-### Aditional information 
+### Additional information 
