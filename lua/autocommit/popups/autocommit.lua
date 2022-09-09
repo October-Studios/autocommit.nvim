@@ -18,7 +18,7 @@ local get_commit_message = a.wrap(function(content, cb)
 end, 2)
 
 local function prompt_commit_message(args, msg, skip_gen)
-  local msg_template_path = cli.config.get("commit.template").show_popup(false).call()[1]
+  local msg_template_path = cli.config.get('commit.template').show_popup(false).call()[1]
   local output = {}
 
   if msg and #msg > 0 then
@@ -26,25 +26,25 @@ local function prompt_commit_message(args, msg, skip_gen)
       table.insert(output, line)
     end
   elseif not skip_gen and not msg_template_path then
-    table.insert(output, "")
+    table.insert(output, '')
   end
 
   if not skip_gen then
     if msg_template_path then
       a.util.scheduler()
       local expanded_path = vim.fn.glob(msg_template_path)
-      if expanded_path == "" then
+      if expanded_path == '' then
         return
       end
       local msg_template = uv_utils.read_file_sync(expanded_path)
       for _, line in pairs(msg_template) do
         table.insert(output, line)
       end
-      table.insert(output, "")
+      table.insert(output, '')
     end
     local lines = cli.commit.dry_run.args(unpack(args)).call()
     for _, line in ipairs(lines) do
-      table.insert(output, "# " .. line)
+      table.insert(output, '# ' .. line)
     end
   end
 
@@ -57,7 +57,7 @@ local function do_commit(popup_, data, cmd, skip_gen)
   a.util.scheduler()
   local commit_file = get_commit_file()
   if data then
-    local ok = prompt_commit_message("", data, skip_gen)
+    local ok = prompt_commit_message('', data, skip_gen)
     if not ok then
       return
     end
@@ -91,12 +91,7 @@ function M.create()
       data = data or ''
       -- we need \r? to support windows
       data = split(data, '\r?\n')
-      do_commit(
-        popup,
-        data,
-        "test",
-        skip_gen
-      )
+      do_commit(popup, data, 'test', skip_gen)
     end)
     :action('n', ' - Cancel and continue saving', function()
       -- noop

@@ -1,11 +1,11 @@
-*.txt*          plugin for automatically committing changes to version control
+*autocommit.txt*plugin for automatically committing code changes to version control
 
 ==============================================================================
-Table of Contents                                         *-table-of-contents*
+Table of Contents                               *autocommit-table-of-contents*
 
-  - 💭 About                                                   |-💭-about|
-  - ⚙️ Setup                                               |-⚙️-setup|
-  - ▶️ Usage                                               |-▶️-usage|
+  - 💭 About                                         |autocommit-💭-about|
+  - ⚙️ Setup                                     |autocommit-⚙️-setup|
+  - ▶️ Usage                                     |autocommit-▶️-usage|
 
 <h1 align="center">
 
@@ -52,13 +52,13 @@ Table of Contents                                         *-table-of-contents*
 
  
 
-💭 ABOUT                                                       *-💭-about*
+💭 ABOUT                                             *autocommit-💭-about*
 
 Autocommit makes a commit to the current version control branch whenever a file
 in the local repository is written. The plugin is configurable to toggle
 confirmation popups for committing changes.
 
-⚙️ SETUP                                                   *-⚙️-setup*
+⚙️ SETUP                                         *autocommit-⚙️-setup*
 
 
 - vim-plug <https://github.com/junegunn/vim-plug>
@@ -78,7 +78,7 @@ confirmation popups for committing changes.
 <
 
 
-▶️ USAGE                                                   *-▶️-usage*
+▶️ USAGE                                         *autocommit-▶️-usage*
 
  
 

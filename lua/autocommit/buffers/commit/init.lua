@@ -34,20 +34,20 @@ function M:open()
   local written = false
   self.buffer = Buffer.create {
     name = self.filename,
-    filetype = "AutocommitCommitMessage",
-    buftype = "",
+    filetype = 'AutocommitCommitMessage',
+    buftype = '',
     kind = config.values.commit_popup.kind,
     modifiable = true,
     readonly = false,
     autocmds = {
-      ["BufWritePost"] = function()
+      ['BufWritePost'] = function()
         written = true
       end,
-      ["BufUnload"] = function()
+      ['BufUnload'] = function()
         if written then
           if
             config.values.disable_commit_confirmation
-            or input.get_confirmation("Are you sure you want to commit?")
+            or input.get_confirmation('Are you sure you want to commit?')
           then
             vim.cmd([[
               silent g/^#/d
@@ -63,7 +63,7 @@ function M:open()
     },
     mappings = {
       n = {
-        ["q"] = function(buffer)
+        ['q'] = function(buffer)
           buffer:close(true)
         end,
       },
@@ -71,7 +71,7 @@ function M:open()
     initialize = function(buffer)
       buffer:set_lines(0, -1, false, self.content)
       if not config.values.disable_insert_on_commit then
-        vim.cmd(":startinsert")
+        vim.cmd(':startinsert')
       end
 
       -- NOTE: This avoids the user having to force to save the contents of the buffer.
