@@ -43,7 +43,7 @@
 
 ## 💭 About
 
-This is a joke plugin, not to be considered for commercial use. The plugin makes a commit to the current version control branch whenever a file in the local repository is edited and written. This can cause a tremendous version control history mess, so use with caution. It is not configurable.
+Autocommit makes a commit to the current version control branch whenever a file in the local repository is written. The plugin is configurable to toggle confirmation popups for committing changes.
 
 ## ⚙️ Setup
 

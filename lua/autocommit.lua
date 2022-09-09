@@ -2,66 +2,73 @@
 -- Developer: Cameron Howell (@crhowell3)
 -- License: MIT
 -- Source: https://github.com/October-Studios/autocommit.nvim
-local M = {}
+local config = require('autocommit.config')
+local lib = require('autocommit.lib')
+local signs = require('autocommit.lib.signs')
+local hl = require('autocommit.lib.hl')
+local status = require('autocommit.status')
 
-local autocommit_require = require('autocommit_require')
-local modules = autocommit_require.lazy_require {
-  loader = 'autocommit.utils.loader',
-  utils_updater = 'autocommit.utils.updater',
-  utils = 'autocommit.utils.utils',
+local autocommit = {
+  lib = require('autocommit.lib'),
+  popups = require('autocommit.popups'),
+  config = config,
+  status = status,
+  get_repo = function()
+    return status.get_repo
+  end,
+  cli = lib.git.cli,
+  get_log_file_path = function()
+    return vim.fn.stdpath('cache') .. '/autocommit.log'
+  end,
+  notif = require('autocommit.lib.notification'),
+  open = function(opts)
+    opts = opts or {}
+    if opts[1] ~= nil then
+      local popup_name = opts[1]
+      local has_pop, popup = pcall(require, 'autocommit.popups.' .. popup_name)
+
+      if not has_pop then
+        vim.api.nvim_err_writeln("Invalid popup '" .. popup_name .. "'")
+      else
+        popup.create()
+      end
+    else
+      status.create(opts.kind, opts.cwd)
+    end
+  end,
+  reset = status.reset,
+  get_cofig = function()
+    return config.values
+  end,
+  dispatch_reset = status.dispatch_reset,
+  refresh = status.refresh,
+  refresh_manually = status.refresh_manually,
+  dispatch_refresh = status.dispatch_refresh,
+  refresh_viml_compat = status.refresh_viml_compat,
+  close = status.close,
+  setup = function(opts)
+    if opts ~= nil then
+      config.values = vim.tbl_deep_extend('force', config.values, opts)
+    end
+    if not config.values.disable_signs then
+      signs.setup()
+    end
+    if config.values.use_keybindings then
+      config.values.mappings.status['F'] = 'PullPopup'
+      config.values.mappings.status['p'] = ''
+    end
+    hl.setup()
+  end,
+  complete = function(arglead)
+    if arglead:find('^kind=') then
+      return { 'kind=replace', 'kind=tab', 'kind=split', 'kind=split_above', 'kind=vsplit', 'kind=floating' }
+    end
+    return vim.tbl_filter(function(arg)
+      return arg:match('^' .. arglead)
+    end, { 'kind=', 'cwd=', 'commit' })
+  end,
 }
-local timers = {
-  main_timer = vim.loop.new_timer(),
-  halt_main_refresh = false,
-}
 
-local refresh_real_curwin
+autocommit.setup()
 
-local default_refresh_events = 'BufWritePost'
-
-local function status_dispatch()
-  return function()
-    local retval
-    local current_ft = refresh_real_curwin
-        and vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(refresh_real_curwin), 'filetype')
-      or vim.bo.filetype
-    retval = handler()
-    return retval
-  end
-end
-
-local function refresh() end
-
-local handler = modules.utils.retry_call_wrap(function()
-  local diff_data = modules.utils_updater.update()
-end)
-
-local function setup()
-  vim.cmd([[augroup autocommit | exec "autocmd!" | augroup END]])
-  modules.loader.load_table('git')
-  vim.loop.timer_stop(timers.main_timer)
-  timers.halt_main_refresh = true
-  vim.cmd([[augroup autocommit_main_refresh | exec "autocmd!" | augroup END]])
-  vim.loop.timer_start(
-    timers.main_timer,
-    0,
-    1000,
-    modules.utils.timer_call(timers.main_timer, 'autocommit_main_refresh', function()
-      refresh {}
-    end, 3, 'autocommit: failed to refresh tabline')
-  )
-  modules.utils.define_autocmd(
-    default_refresh_events,
-    '*',
-    "call v:lua.require'autocommit'.refresh()",
-    'autocommit_main_refresh'
-  )
-end
-
-M = {
-  setup = setup,
-  handler = status_dispatch(),
-  refresh = refresh,
-}
-
-return M
+return autocommit

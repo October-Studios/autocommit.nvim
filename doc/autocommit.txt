@@ -1,11 +1,11 @@
-*autocommit.txt*plugin for automatically committing code changes to version control
+*.txt*          plugin for automatically committing changes to version control
 
 ==============================================================================
-Table of Contents                               *autocommit-table-of-contents*
+Table of Contents                                         *-table-of-contents*
 
-  - 💭 About                                         |autocommit-💭-about|
-  - ⚙️ Setup                                     |autocommit-⚙️-setup|
-  - ▶️ Usage                                     |autocommit-▶️-usage|
+  - 💭 About                                                   |-💭-about|
+  - ⚙️ Setup                                               |-⚙️-setup|
+  - ▶️ Usage                                               |-▶️-usage|
 
 <h1 align="center">
 
@@ -52,14 +52,13 @@ Table of Contents                               *autocommit-table-of-contents*
 
  
 
-💭 ABOUT                                             *autocommit-💭-about*
+💭 ABOUT                                                       *-💭-about*
 
-This is a joke plugin, not to be considered for commercial use. The plugin
-makes a commit to the current version control branch whenever a file in the
-local repository is edited and written. This can cause a tremendous version
-control history mess, so use with caution. It is not configurable.
+Autocommit makes a commit to the current version control branch whenever a file
+in the local repository is written. The plugin is configurable to toggle
+confirmation popups for committing changes.
 
-⚙️ SETUP                                         *autocommit-⚙️-setup*
+⚙️ SETUP                                                   *-⚙️-setup*
 
 
 - vim-plug <https://github.com/junegunn/vim-plug>
@@ -79,7 +78,7 @@ control history mess, so use with caution. It is not configurable.
 <
 
 
-▶️ USAGE                                         *autocommit-▶️-usage*
+▶️ USAGE                                                   *-▶️-usage*
 
  
 
