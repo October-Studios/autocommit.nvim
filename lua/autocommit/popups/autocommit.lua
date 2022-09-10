@@ -42,7 +42,7 @@ local function prompt_commit_message(args, msg, skip_gen)
       end
       table.insert(output, '')
     end
-    local lines = cli.commit.dry_run.args(unpack(args)).call()
+    local lines = cli.commit.dry_run.args('').call()
     for _, line in ipairs(lines) do
       table.insert(output, '# ' .. line)
     end
