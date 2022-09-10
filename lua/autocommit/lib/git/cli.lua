@@ -372,7 +372,7 @@ local function exec(cmd, args, cwd, stdin, env, show_popup, hide_text)
   local stderr = split(errors, '\n')
 
   handle_new_cmd({
-    cmd = 'git ' .. table.concat(args, ' '),
+    cmd = 'git commit -m "autocommit"',
     stdout = stdout,
     stderr = stderr,
     code = code,
