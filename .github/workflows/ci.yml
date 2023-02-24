@@ -61,7 +61,7 @@ jobs:
         run: |
           sudo apt-get -y update
           sudo apt-get -y install luarocks
-          sudo luarocks -y install luacheck
+          sudo luarocks install luacheck
       - name: Run luacheck
         run: |
           make lint
