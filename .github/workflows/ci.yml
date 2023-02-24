@@ -59,9 +59,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: Setup linters
         run: |
-          sudo apt-get update
-          sudo apt-get install luarocks
-          sudo luarocks install luacheck
+          sudo apt-get -y update
+          sudo apt-get -y install luarocks
+          sudo luarocks -y install luacheck
       - name: Run luacheck
         run: |
           make lint
