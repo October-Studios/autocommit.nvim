@@ -80,7 +80,7 @@ end
 function M.get_user_input_with_completion(prompt, options)
   local completer_id = make_completion_function(options)
   local results = user_input_prompt(prompt, nil, completer_id)
-  remove_completion_function(completer_id)
+  --remove_completion_function(completer_id)
   return results
 end
 

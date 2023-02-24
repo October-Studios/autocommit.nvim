@@ -83,7 +83,7 @@ function M.create()
   local p = popup
     .builder()
     :name('AutocommitCommitPopup')
-    :action('y', ' - Commit and push?', function(popup)
+    :action('y', ' - Commit and push?', function(pup)
       a.util.scheduler()
       local commit_file = get_commit_file()
       local _, data = uv_utils.read_file(commit_file)
@@ -91,7 +91,7 @@ function M.create()
       data = data or ''
       -- we need \r? to support windows
       data = split(data, '\r?\n')
-      do_commit(popup, data, 'test', skip_gen)
+      do_commit(pup, data, 'test', skip_gen)
     end)
     :action('n', ' - Cancel and continue saving', function()
       -- noop
