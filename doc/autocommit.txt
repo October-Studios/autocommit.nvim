@@ -56,7 +56,7 @@ Table of Contents                               *autocommit-table-of-contents*
 
 Autocommit makes a commit to the current version control branch whenever a file
 in the local repository is written. The plugin is configurable to toggle
-confirmation popups for committing changes.
+confirmation popups for committing changes. Still a work in progress.
 
 ⚙️ SETUP                                         *autocommit-⚙️-setup*
 
