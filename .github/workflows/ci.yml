@@ -53,14 +53,14 @@ jobs:
         run: |
           make test 
   lint:
-    runs-on: ubuntu-20.04
+    runs-on: self-hosted
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v2
       - name: Setup linters
         run: |
-          sudo apt-get update
-          sudo apt-get install luarocks
+          sudo apt-get -y update
+          sudo apt-get -y install luarocks
           sudo luarocks install luacheck
       - name: Run luacheck
         run: |
