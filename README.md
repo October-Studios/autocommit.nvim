@@ -43,7 +43,7 @@
 
 ## 💭 About
 
-Autocommit makes a commit to the current version control branch whenever a file in the local repository is written. The plugin is configurable to toggle confirmation popups for committing changes.
+Autocommit makes a commit to the current version control branch whenever a file in the local repository is written. The plugin is configurable to toggle confirmation popups for committing changes. Still a work in progress.
 
 ## ⚙️ Setup
 
