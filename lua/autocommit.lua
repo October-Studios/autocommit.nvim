@@ -3,8 +3,7 @@
 -- License: MIT
 -- Source: https://github.com/October-Studios/autocommit.nvim
 local api = vim.api
-
-local M = {}
+local M
 
 function M.setup()
   -- Define Git commit message template
@@ -32,5 +31,9 @@ function M.setup()
     vim.fn.system("git -C " .. vim.fn.expand("%:p:h") .. " commit -m '" .. commit_msg .. "'")
   end
 end
+
+M = {
+  setup = setup
+}
 
 return M
