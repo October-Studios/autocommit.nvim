@@ -31,12 +31,6 @@ function M.setup()
     local commit_msg = string.format(commit_template, file_path)
     vim.fn.system("git -C " .. vim.fn.expand("%:p:h") .. " commit -m '" .. commit_msg .. "'")
   end
-
-  -- Register autocommit function to BufWritePost event
-  api.nvim_command("augroup autocommit")
-  api.nvim_command("autocmd!")
-  api.nvim_command("autocmd BufWritePost * lua require('autocommit').autocommit()")
-  api.nvim_command("augroup END")
 end
 
 return M
