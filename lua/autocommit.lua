@@ -5,7 +5,7 @@
 local api = vim.api
 local M
 
-function M.setup()
+local function setup()
   -- Define Git commit message template
   local commit_template = "Auto-commit: Save %s"
 
