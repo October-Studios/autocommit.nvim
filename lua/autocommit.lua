@@ -15,8 +15,10 @@ local function setup()
     local bufname = api.nvim_buf_get_name(0)
 
     -- Check if buffer is in a Git repository
-    local git_dir = vim.fn.systemlist("git -C " .. vim.fn.expand("%:p:h") .. " rev-parse --git-dir")[1]
-    if not git_dir or git_dir == "" then
+    local git_dir_cmd = "git -C " .. vim.fn.expand("%:p:h") .. " rev-parse --git-dir"
+    local git_dir_result = vim.fn.systemlist(git_dir_cmd)
+    local git_dir = git_dir_result[1]
+    if git_dir == nil or git_dir == "" then
       return
     end
 
@@ -24,11 +26,13 @@ local function setup()
     local file_path = vim.fn.fnamemodify(bufname, ":.")
 
     -- Add changes to Git index
-    vim.fn.system("git -C " .. vim.fn.expand("%:p:h") .. " add " .. file_path)
+    local git_add_cmd = "git -C " .. vim.fn.expand("%:p:h") .. " add " .. file_path
+    vim.fn.system(git_add_cmd)
 
     -- Commit changes with a message
     local commit_msg = string.format(commit_template, file_path)
-    vim.fn.system("git -C " .. vim.fn.expand("%:p:h") .. " commit -m '" .. commit_msg .. "'")
+    local git_commit_cmd = "git -C " .. vim.fn.expand("%:p:h") .. " commit -m '" .. commit_msg .. "'"
+    vim.fn.system(git_commit_cmd)
   end
 end
 
