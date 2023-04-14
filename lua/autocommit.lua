@@ -28,6 +28,10 @@ local function autocommit()
   local commit_msg = string.format('Autocommit: %s', file_path)
   local git_commit_cmd = 'git -C ' .. vim.fn.expand('%:p:h') .. " commit -m '" .. commit_msg .. "'"
   vim.fn.system(git_commit_cmd)
+
+  -- Show a pop-up notification
+  local message = string.format("Changes committed: %s", file_path)
+  api.nvim_notify(message, 1, {})
 end
 
 M = {
